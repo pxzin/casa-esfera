@@ -1,31 +1,43 @@
-import React, { useEffect, useState } from "react";
-import { Button, Typography, Container } from "@mui/material";
+import React from "react";
+import { GetServerSideProps } from "next";
+import { getSession, signOut } from "next-auth/react";
+import { Container, Typography, Button } from "@mui/material";
+import { Session } from "next-auth";
 
-const HelloWorld: React.FC = () => {
-  const [isServer, setIsServer] = useState(true);
+interface IndexPageProps {
+  session: Session | null;
+}
 
-  useEffect(() => {
-    setIsServer(false);
-  }, []);
-
-  const handleClick = () => {
-    alert(isServer ? "Hello, Server!" : "Hello, Client!");
-  };
+const IndexPage = ({ session }: IndexPageProps) => {
+  if (!session) {
+    return null;
+  }
 
   return (
     <Container>
-      <Typography variant="h1" gutterBottom>
-        {isServer ? "Hello, Server!" : "Hello, Client!"}
+      <Typography variant="h4" component="h1" gutterBottom>
+        Welcome to the Dashboard
       </Typography>
-      <Button onClick={handleClick} variant="contained" color="primary">
-        Click Me
+      <Button variant="contained" color="primary" onClick={() => signOut()}>
+        Logout
       </Button>
     </Container>
   );
 };
 
-const Home: React.FC = () => {
-  return <HelloWorld />;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth/login",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: { session },
+  };
 };
 
-export default Home;
+export default IndexPage;

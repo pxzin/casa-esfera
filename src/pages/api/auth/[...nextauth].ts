@@ -14,17 +14,19 @@ export default NextAuth({
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Email", type: "text" },
+        email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
         if (!credentials) {
           return null;
         }
+
         const user = await signInUseCase.execute(
-          credentials.username,
+          credentials.email,
           credentials.password
         );
+
         if (user) {
           return { id: user.id, name: user.name, email: user.email };
         } else {

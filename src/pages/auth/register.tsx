@@ -29,11 +29,12 @@ const Register: React.FC = () => {
       await httpClient.post("/api/auth/register", { name, email, password });
       setSuccess("Registration successful! Redirecting to login page...");
       setTimeout(() => {
-        router.push("/auth/signin");
+        router.push("/auth/login");
       }, 3000);
     } catch (error) {
-      console.error("Registration failed", error);
-      setError("Registration failed. Please try again.");
+      const errMsg = `Registration failed. Please try again.`;
+      console.log(error);
+      setError(errMsg);
     }
   };
 

@@ -10,6 +10,7 @@ export class SignInUseCase {
 
   async execute(email: string, password: string): Promise<User | null> {
     const user = await this.userRepository.findByEmail(email);
+
     if (
       user &&
       (await this.userRepository.comparePassword(password, user.password))
