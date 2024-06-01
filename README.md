@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CasaEsfera
+
+CasaEsfera is a personal software project designed to integrate various services that enhance daily life, such as access to home surveillance cameras, data hosting (pictures, audio), task tracking, reminders, Pomodoro assistance, and more. The project aims to be a comprehensive solution for home management, accessible by multiple family members and hosted locally.
+
+## Features
+
+- Home Surveillance Camera Integration
+- Data Hosting (Pictures, Audio)
+- Task Tracker
+- Reminders
+- Pomodoro Assistance
+- User Authentication and Access Control
+
+## Tech Stack
+
+- **Frontend & Backend**: Next.js
+- **Database**: MongoDB with Mongoose
+- **Authentication**: NextAuth.js
+- **Styling**: Material-UI
+- **Package Manager**: pnpm
+- **Languages**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js
+- pnpm
+- MongoDB
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```sh
+   git clone https://github.com/pxzin/casa-esfera.git
+   cd casa-esfera
+   ```
 
-## Learn More
+2. **Install dependencies**:
 
-To learn more about Next.js, take a look at the following resources:
+   ```sh
+   pnpm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Set up environment variables**:
+   - Create a `.env.local` file in the root directory
+   - Add the following environment variables:
+     ```env
+     MONGODB_URI=your_mongodb_uri
+     NEXTAUTH_URL=http://localhost:3000
+     ```
+4. **Run the development server**:
+   ```sh
+   pnpm dev
+   ```
+5. **Open [http://localhost:3000](http://localhost:3000) in your browser**.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Next Steps Checklist:
 
-## Deploy on Vercel
+- Authentication and Authorization
+- Home Surveillance Camera Integration
+- Data Hosting (Pictures, Audio)
+- Task Tracker
+- Reminders
+- Pomodoro Assistance
+- UI/UX Improvements
+- Testing
+- Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Is too early to accept contributions, but feel free to open an issue or contact me if you have any questions or suggestions.
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
