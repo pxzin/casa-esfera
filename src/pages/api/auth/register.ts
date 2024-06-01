@@ -11,6 +11,7 @@ const registerUseCase = new RegisterUseCase(userRepository);
 const registerHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const { name, email, password } = req.body;
+    console.log("register", { name, email, password });
     try {
       await registerUseCase.execute({ id: "", name, email, password });
       res.status(201).json({ message: "User registered successfully" });
