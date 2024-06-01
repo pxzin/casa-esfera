@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import UserModel, { UserDocument } from "@/infrastructure/data/models/User";
+import UserModel from "@/infrastructure/data/models/User";
 import { UserRepository } from "@/domain/repositories/UserRepository";
 import { User } from "@/domain/entities/User";
 
@@ -8,7 +8,7 @@ export class UserRepositoryImpl implements UserRepository {
     const userDoc = await UserModel.findOne({ email }).exec();
     if (!userDoc) return null;
     return {
-      id: userDoc._id as unknown as string, // Cast _id to string
+      id: userDoc._id as unknown as string,
       name: userDoc.name,
       email: userDoc.email,
       password: userDoc.password,
